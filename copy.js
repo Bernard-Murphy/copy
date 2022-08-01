@@ -45,7 +45,7 @@ parseDirectory = directory => {
      * Repeat until all files have paths
      */
     return new Promise((resolve, reject) => {
-        exec(`cd ${dir}${directory} && ls`, async (err, stdout, stderr) => {
+        exec(`cd '${dir}${directory}' && ls`, async (err, stdout, stderr) => {
             if (err) return reject(err);
             if (stdout){
                 let data = stdout.split('\n');
