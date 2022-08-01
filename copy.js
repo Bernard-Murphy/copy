@@ -52,11 +52,14 @@ parseDirectory = directory => {
                 for (let i = 0; i < data.length; i++){
                     let point = data[i];
                     if (point !== ''){
-                        if (point.split('.').length > 1) exec(`aws s3 cp ${directory}/${point} s3://joebidenisapedophile/joebiden/ipad/${directory}/${point}`);
+                        if (point.split('.').length > 1) exec(`aws s3 cp ${directory}/${point} s3://joebidenisapedophile/joebiden/ipad/${directory}/${point}`, (err, stdout, stderr) => {
+                            if (err) console.log('copy error', err);
+                            if (stdout) return resolve();
+                            if (stderr) console.log('stderr', stderr);
+                        });
                         else parseDirectory(`${directory}/${point}`);
                     }
                 }
-                return resolve();
             }
             if (stderr) return reject(stderr);
         })
