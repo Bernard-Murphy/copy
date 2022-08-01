@@ -52,7 +52,7 @@ parseDirectory = directory => {
                 for (let i = 0; i < data.length; i++){
                     let point = data[i];
                     if (point !== ''){
-                        if (point.split('.').length > 1) cacheFiles.push(`${directory}/${point}` + ` s3://joebidenisapedophile/joebiden/ipad/${directory}/${point}`);
+                        if (point.split('.').length > 1) exec(`aws s3 cp ${directory}/${point} s3://joebidenisapedophile/joebiden/ipad/${directory}/${point}`);
                         else parseDirectory(`${directory}/${point}`);
                     }
                 }
